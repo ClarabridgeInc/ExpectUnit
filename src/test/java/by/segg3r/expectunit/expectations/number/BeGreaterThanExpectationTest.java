@@ -23,5 +23,13 @@ public class BeGreaterThanExpectationTest {
 		BeGreaterThanExpectation<Double> beGreaterThan = new BeGreaterThanExpectation<Double>(b);
 		assertFalse(beGreaterThan.match(a));
 	}
+	
+	@Test
+	public void negativeEqual() {
+		double a = 1.;
+		double b = 1.;
+		BeGreaterThanExpectation<Double> beGreaterThan = new BeGreaterThanExpectation<Double>(b);
+		assertFalse(beGreaterThan.match(a));
+	}
 
 }

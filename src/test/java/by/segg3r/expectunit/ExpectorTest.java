@@ -101,4 +101,81 @@ public class ExpectorTest {
 		expector.to(expectation);
 	}
 	
+	public static class ThrowerSample {
+		public ThrowerSample() {
+			
+		}
+		
+		public void throwingNullPointer() {
+			throw new NullPointerException();
+		}
+		
+		public int notThrowingAnything() {
+			return 10;
+		}
+	}
+	
+	@Test
+	public void toThrowPositive() {
+		ThrowerSample thrower = new ThrowerSample();
+		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
+		expector.toThrow(NullPointerException.class).when().throwingNullPointer();
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void toThrowNegativeWrongClass() {
+		ThrowerSample thrower = new ThrowerSample();
+		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
+		expector.toThrow(ArrayIndexOutOfBoundsException.class).when().throwingNullPointer();
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void toThrowNegativeNotThrowing() {
+		ThrowerSample thrower = new ThrowerSample();
+		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
+		expector.toThrow(ArrayIndexOutOfBoundsException.class).when().notThrowingAnything();
+	}
+	
+	@Test
+	public void notToThrowPositive() {
+		ThrowerSample thrower = new ThrowerSample();
+		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
+		expector.not().toThrow(NullPointerException.class).when().notThrowingAnything();
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void notToThrowNegative() {
+		ThrowerSample thrower = new ThrowerSample();
+		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
+		expector.not().toThrow(NullPointerException.class).when().throwingNullPointer();
+	}
+	
+	@Test
+	public void notToThrowJustPositive() {
+		ThrowerSample thrower = new ThrowerSample();
+		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
+		expector.not().toThrow().when().notThrowingAnything();
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void notToThrowJustNegative() {
+		ThrowerSample thrower = new ThrowerSample();
+		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
+		expector.not().toThrow().when().throwingNullPointer();
+	}
+	
+	@Test
+	public void toThrowJustPositive() {
+		ThrowerSample thrower = new ThrowerSample();
+		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
+		expector.toThrow().when().throwingNullPointer();
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void toThrowJustNegative() {
+		ThrowerSample thrower = new ThrowerSample();
+		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
+		expector.toThrow().when().notThrowingAnything();
+	}
+
 }
