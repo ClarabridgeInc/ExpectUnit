@@ -6,6 +6,8 @@ import java.util.Collection;
 import by.segg3r.expectunit.expectations.basic.BeExpectation;
 import by.segg3r.expectunit.expectations.basic.BeNullExpectation;
 import by.segg3r.expectunit.expectations.basic.EqualExpectation;
+import by.segg3r.expectunit.expectations.booleans.BeFalsyExpectation;
+import by.segg3r.expectunit.expectations.booleans.BeTruthyExpectation;
 import by.segg3r.expectunit.expectations.collections.ContainOnlyExpectation;
 import by.segg3r.expectunit.expectations.numbers.BeGreaterThanExpectation;
 import by.segg3r.expectunit.expectations.numbers.BeLessThanExpectation;
@@ -23,6 +25,14 @@ public class Expectations {
 	
 	public static <O> Expectation<O> be(O other) {
 		return new BeExpectation<O>(other);
+	}
+	
+	public static Expectation<Boolean> beTruthy() {
+		return new BeTruthyExpectation();
+	}
+	
+	public static Expectation<Boolean> beFalsy() {
+		return new BeFalsyExpectation();
 	}
 	
 	public static <N extends Number> Expectation<N> beGreaterThan(N other) {
