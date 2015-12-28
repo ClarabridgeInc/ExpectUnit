@@ -1,9 +1,15 @@
 package by.segg3r.expectunit;
 
-public class Expect {
+import by.segg3r.expectunit.expectors.NumberExpector;
+
+public class Expect extends Expectations {
 
 	public static <O> Expector<O> expect(O object) {
 		return new Expector<O>(object);
+	}
+	
+	public static <N extends Number> NumberExpector<N> expect(N number) {
+		return new NumberExpector<N>(number);
 	}
 	
 }

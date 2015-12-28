@@ -18,12 +18,25 @@ public class Expector<O> {
 		this.negative = negative;
 	}
 
-	public void to(Expectation<O> expectation) {
+	public Expectation<O> to(Expectation<O> expectation) {
 		if (expectation.match(object) == negative) {
 			throw new AssertionError();
 		}
+		return expectation;
+	}
+	
+	public Expectation<O> toBeNull() {
+		return this.to(Expectations.<O>beNull());
+	}
+	
+	public Expectation<O> toEqual(O other) {
+		return this.to(Expectations.<O>equal(other));
 	}
 
+	public Expectation<O> toBe(O other) {
+		return this.to(Expectations.<O>be(other));
+	}
+	
 	public Thrower<O> toThrow() {
 		return this.toThrow(null);
 	}

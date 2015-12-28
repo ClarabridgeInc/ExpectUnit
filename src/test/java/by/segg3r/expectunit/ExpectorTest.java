@@ -1,6 +1,9 @@
 package by.segg3r.expectunit;
 
-import static org.junit.Assert.*;
+import static by.segg3r.expectunit.Expect.expect;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -177,5 +180,42 @@ public class ExpectorTest {
 		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
 		expector.toThrow().when().notThrowingAnything();
 	}
+	
+	@Test
+	public void toBePositive() {
+		Object object = new Object();
+		expect(object).toBe(object);
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void toBeNegative() {
+		Object object = new Object();
+		Object anotherObject = new Object();
+		expect(object).toBe(anotherObject);
+	}
+	
+	@Test
+	public void toEqualPositive() {
+		Object object = new Object();
+		expect(object).toEqual(object);
+	}
+	
+	@Test(expected = AssertionError.class)
+	public void toEqualNegative() {
+		Object object = new Object();
+		Object anotherObject = new Object();
+		expect(object).toEqual(anotherObject);
+	}
 
+	@Test
+	public void toBeNullPositive() {
+		Object obj = null;
+		expect(obj).toBeNull();
+	}
+
+	@Test(expected = AssertionError.class)
+	public void toBeNullNegative() {
+		Object obj = new Object();
+		expect(obj).toBeNull();
+	}
 }
