@@ -1,11 +1,10 @@
 package by.segg3r.expectunit;
 
-import static by.segg3r.expectunit.Expect.expect;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.testng.annotations.Test;
 
-import org.junit.Test;
+import static by.segg3r.expectunit.Expect.expect;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 public class ExpectorTest {
 
@@ -13,7 +12,7 @@ public class ExpectorTest {
 	public void defaultShouldBePositive() {
 		Object obj = new Object();
 		Expector<Object> expector = new Expector<Object>(obj);
-		assertEquals(false, expector.isNegative());
+		assertFalse(expector.isNegative());
 	}
 	
 	@Test
@@ -21,7 +20,7 @@ public class ExpectorTest {
 		Object obj = new Object();
 		Expector<Object> expector = new Expector<Object>(obj);
 		Expector<Object> notExpector = expector.not();
-		assertEquals(true, notExpector.isNegative());
+		assertTrue(notExpector.isNegative());
 	}
 	
 	@Test
@@ -29,7 +28,7 @@ public class ExpectorTest {
 		Object obj = new Object();
 		Expector<Object> notExpector = new Expector<Object>(obj, true);
 		Expector<Object> expector = notExpector.not();
-		assertEquals(false, expector.isNegative());
+		assertFalse(expector.isNegative());
 	}
 	
 	@Test
@@ -47,7 +46,7 @@ public class ExpectorTest {
 		Expector<Object> notExpector = expector.not();
 		assertFalse(expector == notExpector);
 	}
-	
+
 	@Test
 	public void positiveExpectation() {
 		Object obj = new Object();
@@ -62,7 +61,7 @@ public class ExpectorTest {
 		expector.to(expectation);
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void negativeExpectation() {
 		Object obj = new Object();
 		Expector<Object> expector = new Expector<Object>(obj);
@@ -90,7 +89,7 @@ public class ExpectorTest {
 		expector.to(expectation);
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void notNegativeExpectation() {
 		Object obj = new Object();
 		Expector<Object> expector = new Expector<Object>(obj, true);
@@ -125,14 +124,14 @@ public class ExpectorTest {
 		expector.toThrow(NullPointerException.class).when().throwingNullPointer();
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void toThrowNegativeWrongClass() {
 		ThrowerSample thrower = new ThrowerSample();
 		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
 		expector.toThrow(ArrayIndexOutOfBoundsException.class).when().throwingNullPointer();
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void toThrowNegativeNotThrowing() {
 		ThrowerSample thrower = new ThrowerSample();
 		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
@@ -146,7 +145,7 @@ public class ExpectorTest {
 		expector.not().toThrow(NullPointerException.class).when().notThrowingAnything();
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void notToThrowNegative() {
 		ThrowerSample thrower = new ThrowerSample();
 		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
@@ -160,7 +159,7 @@ public class ExpectorTest {
 		expector.not().toThrow().when().notThrowingAnything();
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void notToThrowJustNegative() {
 		ThrowerSample thrower = new ThrowerSample();
 		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
@@ -174,7 +173,7 @@ public class ExpectorTest {
 		expector.toThrow().when().throwingNullPointer();
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void toThrowJustNegative() {
 		ThrowerSample thrower = new ThrowerSample();
 		Expector<ThrowerSample> expector = new Expector<ThrowerSample>(thrower);
@@ -187,7 +186,7 @@ public class ExpectorTest {
 		expect(object).toBe(object);
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void toBeNegative() {
 		Object object = new Object();
 		Object anotherObject = new Object();
@@ -200,7 +199,7 @@ public class ExpectorTest {
 		expect(object).toEqual(object);
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void toEqualNegative() {
 		Object object = new Object();
 		Object anotherObject = new Object();
@@ -213,7 +212,7 @@ public class ExpectorTest {
 		expect(obj).toBeNull();
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void toBeNullNegative() {
 		Object obj = new Object();
 		expect(obj).toBeNull();

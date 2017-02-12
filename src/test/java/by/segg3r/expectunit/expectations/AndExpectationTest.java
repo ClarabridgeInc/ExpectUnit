@@ -1,10 +1,10 @@
 package by.segg3r.expectunit.expectations;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 import by.segg3r.expectunit.Expectation;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 public class AndExpectationTest {
 	

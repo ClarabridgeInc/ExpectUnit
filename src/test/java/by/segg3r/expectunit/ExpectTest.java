@@ -1,9 +1,9 @@
 package by.segg3r.expectunit;
 
-import static by.segg3r.expectunit.Expect.*;
-import static org.junit.Assert.*;
+import org.testng.annotations.Test;
 
-import org.junit.Test;
+import static by.segg3r.expectunit.Expect.*;
+import static org.testng.Assert.assertEquals;
 
 public class ExpectTest {
 
@@ -11,7 +11,7 @@ public class ExpectTest {
 	public void shouldCreateExpectorWithProvidedObject() {
 		Object obj = new Object();
 		Expector<Object> expector = expect(obj);
-		assertEquals(obj, expector.getObject());
+		assertEquals(expector.getObject(), obj);
 	}
 	
 }

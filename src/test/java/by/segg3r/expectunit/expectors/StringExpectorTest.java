@@ -1,8 +1,8 @@
 package by.segg3r.expectunit.expectors;
 
-import static by.segg3r.expectunit.Expect.expect;
+import org.testng.annotations.Test;
 
-import org.junit.Test;
+import static by.segg3r.expectunit.Expect.expect;
 
 public class StringExpectorTest {
 
@@ -11,7 +11,7 @@ public class StringExpectorTest {
 		expect("Hello world").toContain("world");
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void toContainNegative() {
 		expect("Hello world").toContain("words");
 	}
@@ -21,7 +21,7 @@ public class StringExpectorTest {
 		expect("Hello world").toMatch("H.*d");
 	}
 
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void toMatchNegative() {
 		expect("Hello words").toMatch("H.*d");
 	}

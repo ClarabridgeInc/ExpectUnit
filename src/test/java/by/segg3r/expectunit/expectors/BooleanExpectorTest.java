@@ -1,8 +1,8 @@
 package by.segg3r.expectunit.expectors;
 
-import static by.segg3r.expectunit.Expect.expect;
+import org.testng.annotations.Test;
 
-import org.junit.Test;
+import static by.segg3r.expectunit.Expect.expect;
 
 public class BooleanExpectorTest {
 
@@ -11,7 +11,7 @@ public class BooleanExpectorTest {
 		expect(true).toBeTruthy();
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void toBeTruthyNegative() {
 		expect(false).toBeTruthy();
 	}
@@ -21,7 +21,7 @@ public class BooleanExpectorTest {
 		expect(false).toBeFalsy();
 	}
 	
-	@Test(expected = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class)
 	public void toBeFalsyNegative() {
 		expect(true).toBeFalsy();
 	}
