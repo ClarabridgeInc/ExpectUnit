@@ -1,8 +1,6 @@
 package by.segg3r.expectunit.expectations.strings;
 
-import by.segg3r.expectunit.Expectation;
-
-public class ContainExpectation extends Expectation<String> {
+public class ContainExpectation extends StringExpectation {
 
 	private String other;
 	
@@ -15,6 +13,9 @@ public class ContainExpectation extends Expectation<String> {
 		return object.contains(other);
 	}
 
-	
-	
+	@Override
+	public String getMatchErrorMessage() {
+		return "contain " + getAssertionStringObjectRepresentation(other);
+	}
+
 }

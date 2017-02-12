@@ -14,10 +14,20 @@ public class ExpectationTest {
 			public boolean match(Object object) {
 				return false;
 			}
+
+			@Override
+			public String getMatchErrorMessage() {
+				return "";
+			}
 		};
 		Expectation<Object> expectation2 = new Expectation<Object>() {
 			public boolean match(Object object) {
 				return false;
+			}
+
+			@Override
+			public String getMatchErrorMessage() {
+				return "";
 			}
 		};
 		AndExpectation<Object> and = expectation1.and(expectation2);
@@ -32,10 +42,20 @@ public class ExpectationTest {
 			public boolean match(Object object) {
 				return false;
 			}
+
+			@Override
+			public String getMatchErrorMessage() {
+				return "";
+			}
 		};
 		Expectation<Object> expectation2 = new Expectation<Object>() {
 			public boolean match(Object object) {
 				return false;
+			}
+
+			@Override
+			public String getMatchErrorMessage() {
+				return "";
 			}
 		};
 		OrExpectation<Object> and = expectation1.or(expectation2);

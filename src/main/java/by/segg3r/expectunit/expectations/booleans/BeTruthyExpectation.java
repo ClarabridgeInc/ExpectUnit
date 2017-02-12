@@ -8,5 +8,10 @@ public class BeTruthyExpectation extends Expectation<Boolean> {
 	public boolean match(Boolean object) {
 		return object;
 	}
-	
+
+	@Override
+	public String getMatchErrorMessage() {
+		return "be truthy";
+	}
+
 }

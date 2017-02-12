@@ -15,4 +15,9 @@ public class EqualExpectation<O> extends Expectation<O> {
 		return object.equals(other);
 	}
 
+	@Override
+	public String getMatchErrorMessage() {
+		return "equal " + other;
+	}
+
 }

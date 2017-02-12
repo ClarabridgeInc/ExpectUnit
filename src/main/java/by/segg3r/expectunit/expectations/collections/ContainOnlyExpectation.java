@@ -13,4 +13,9 @@ public class ContainOnlyExpectation<O> extends ContainExpectation<O> {
 		return object.containsAll(this.getEntities()) && object.size() == this.getEntities().size();
 	}
 
+	@Override
+	public String getMatchErrorMessage() {
+		return "contain only " + getEntities();
+	}
+
 }

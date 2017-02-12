@@ -15,4 +15,9 @@ public class BeExpectation<O> extends Expectation<O> {
 		return object == other;
 	}
 
+	@Override
+	public String getMatchErrorMessage() {
+		return "be " + other;
+	}
+
 }

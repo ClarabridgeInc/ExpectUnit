@@ -3,9 +3,7 @@ package by.segg3r.expectunit.expectations.strings;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import by.segg3r.expectunit.Expectation;
-
-public class MatchExpectation extends Expectation<String> {
+public class MatchExpectation extends StringExpectation {
 
 	private String other;
 	
@@ -20,6 +18,9 @@ public class MatchExpectation extends Expectation<String> {
 		return m.matches();
 	}
 
-	
-	
+	@Override
+	public String getMatchErrorMessage() {
+		return "match regular expression " + getAssertionStringObjectRepresentation(other);
+	}
+
 }

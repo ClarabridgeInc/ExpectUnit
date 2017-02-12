@@ -15,14 +15,18 @@ public class NumberExpectorTest {
 		expect(a).toBeGreaterThan(b);
 	}
 
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(
+			expectedExceptions = AssertionError.class,
+			expectedExceptionsMessageRegExp = "Expected 1.0 to be greater than 2.0")
 	public void toBeGreaterThanNegative() {
 		double a = 1.;
 		double b = 2.;
 		expect(a).toBeGreaterThan(b);
 	}
 
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(
+			expectedExceptions = AssertionError.class,
+			expectedExceptionsMessageRegExp = "Expected 1.0 to be greater than 1.0")
 	public void toBeGreaterThanNegativeEqual() {
 		double a = 1.;
 		double b = 1.;
@@ -39,14 +43,18 @@ public class NumberExpectorTest {
 		assertTrue(beLessThan.match(a));
 	}
 
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(
+			expectedExceptions = AssertionError.class,
+			expectedExceptionsMessageRegExp = "Expected 1.0 to be less than 0.5")
 	public void toBeLessThanNegative() {
 		double a = 1.;
 		double b = .5;
 		expect(a).toBeLessThan(b);
 	}
 
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(
+			expectedExceptions = AssertionError.class,
+			expectedExceptionsMessageRegExp = "Expected 1.0 to be less than 1.0")
 	public void toBeLessThanNegativeEqual() {
 		double a = 1.;
 		double b = 1.;

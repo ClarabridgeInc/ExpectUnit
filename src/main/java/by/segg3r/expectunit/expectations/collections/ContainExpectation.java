@@ -21,4 +21,9 @@ public class ContainExpectation<O> extends Expectation<Collection<O>> {
 		return this.entities;
 	}
 
+	@Override
+	public String getMatchErrorMessage() {
+		return "contain " + entities;
+	}
+
 }

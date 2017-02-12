@@ -20,4 +20,11 @@ public abstract class ExpectationOfTwo<O> extends Expectation<O> {
 		return second;
 	}
 
+	@Override
+	public String getMatchErrorMessage() {
+		return getFirst().getMatchErrorMessage() + " " + getPrep() + " " + getSecond().getMatchErrorMessage();
+	}
+
+	protected abstract String getPrep();
+
 }

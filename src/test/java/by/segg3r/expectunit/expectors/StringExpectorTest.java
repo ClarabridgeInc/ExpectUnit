@@ -11,7 +11,9 @@ public class StringExpectorTest {
 		expect("Hello world").toContain("world");
 	}
 
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(
+			expectedExceptions = AssertionError.class,
+			expectedExceptionsMessageRegExp = "Expected \"Hello world\" to contain \"words\"")
 	public void toContainNegative() {
 		expect("Hello world").toContain("words");
 	}
@@ -21,7 +23,9 @@ public class StringExpectorTest {
 		expect("Hello world").toMatch("H.*d");
 	}
 
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(
+			expectedExceptions = AssertionError.class,
+			expectedExceptionsMessageRegExp = "Expected \"Hello words\" to match regular expression \"H\\.\\*d\"")
 	public void toMatchNegative() {
 		expect("Hello words").toMatch("H.*d");
 	}

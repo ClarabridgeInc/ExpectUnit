@@ -20,11 +20,17 @@ public class Expector<O> {
 
 	public Expectation<O> to(Expectation<O> expectation) {
 		if (expectation.match(object) == negative) {
-			throw new AssertionError();
+			throw new AssertionError(getAssertionErrorMessage(expectation));
 		}
 		return expectation;
 	}
-	
+
+	private String getAssertionErrorMessage(Expectation<O> expectation) {
+		return "Expected " + expectation.getAssertionStringObjectRepresentation(object)
+				+ (negative ? " not" : "")
+				+ " to " + expectation.getMatchErrorMessage();
+	}
+
 	public Expectation<O> toBeNull() {
 		return this.to(Expectations.<O>beNull());
 	}

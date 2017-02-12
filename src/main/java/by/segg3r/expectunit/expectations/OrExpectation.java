@@ -7,9 +7,14 @@ public class OrExpectation<O> extends ExpectationOfTwo<O> {
 	public OrExpectation(Expectation<O> first, Expectation<O> second) {
 		super(first, second);
 	}
-	
+
 	public boolean match(O object) {
 		return getFirst().match(object) || getSecond().match(object);
+	}
+
+	@Override
+	protected String getPrep() {
+		return "or";
 	}
 
 }

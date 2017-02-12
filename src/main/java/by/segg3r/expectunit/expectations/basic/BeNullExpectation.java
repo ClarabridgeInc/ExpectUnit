@@ -9,4 +9,10 @@ public class BeNullExpectation<O> extends Expectation<O> {
 		return object == null;
 	}
 
+	@Override
+	public String getMatchErrorMessage() {
+		return "be null";
+	}
+
 }
+

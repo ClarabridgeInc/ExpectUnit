@@ -15,4 +15,9 @@ public class BeLessThanExpectation<N extends Number> extends Expectation<N> {
 		return object.doubleValue() < other.doubleValue();
 	}
 
+	@Override
+	public String getMatchErrorMessage() {
+		return "be less than " + other;
+	}
+
 }

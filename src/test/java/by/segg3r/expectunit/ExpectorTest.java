@@ -55,7 +55,12 @@ public class ExpectorTest {
 		Expectation<Object> expectation = new Expectation<Object>() {
 			public boolean match(Object object) {
 				return true;
-			}	
+			}
+
+			@Override
+			public String getMatchErrorMessage() {
+				return "";
+			}
 		};
 		
 		expector.to(expectation);
@@ -69,7 +74,12 @@ public class ExpectorTest {
 		Expectation<Object> expectation = new Expectation<Object>() {
 			public boolean match(Object object) {
 				return false;
-			}	
+			}
+
+			@Override
+			public String getMatchErrorMessage() {
+				return "";
+			}
 		};
 		
 		expector.to(expectation);
@@ -83,7 +93,12 @@ public class ExpectorTest {
 		Expectation<Object> expectation = new Expectation<Object>() {
 			public boolean match(Object object) {
 				return false;
-			}	
+			}
+
+			@Override
+			public String getMatchErrorMessage() {
+				return "";
+			}
 		};
 		
 		expector.to(expectation);
@@ -97,7 +112,12 @@ public class ExpectorTest {
 		Expectation<Object> expectation = new Expectation<Object>() {
 			public boolean match(Object object) {
 				return true;
-			}	
+			}
+
+			@Override
+			public String getMatchErrorMessage() {
+				return "";
+			}
 		};
 		
 		expector.to(expectation);
@@ -186,7 +206,7 @@ public class ExpectorTest {
 		expect(object).toBe(object);
 	}
 	
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class, expectedExceptionsMessageRegExp = "Expected .* to be .*")
 	public void toBeNegative() {
 		Object object = new Object();
 		Object anotherObject = new Object();
@@ -199,7 +219,7 @@ public class ExpectorTest {
 		expect(object).toEqual(object);
 	}
 	
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class, expectedExceptionsMessageRegExp = "Expected .* to equal .*")
 	public void toEqualNegative() {
 		Object object = new Object();
 		Object anotherObject = new Object();
@@ -212,7 +232,7 @@ public class ExpectorTest {
 		expect(obj).toBeNull();
 	}
 
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(expectedExceptions = AssertionError.class, expectedExceptionsMessageRegExp = "Expected .* to be null")
 	public void toBeNullNegative() {
 		Object obj = new Object();
 		expect(obj).toBeNull();

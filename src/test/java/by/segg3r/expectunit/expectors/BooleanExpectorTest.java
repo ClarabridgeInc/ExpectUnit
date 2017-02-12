@@ -11,7 +11,9 @@ public class BooleanExpectorTest {
 		expect(true).toBeTruthy();
 	}
 	
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(
+			expectedExceptions = AssertionError.class,
+			expectedExceptionsMessageRegExp = "Expected false to be truthy")
 	public void toBeTruthyNegative() {
 		expect(false).toBeTruthy();
 	}
@@ -21,7 +23,9 @@ public class BooleanExpectorTest {
 		expect(false).toBeFalsy();
 	}
 	
-	@Test(expectedExceptions = AssertionError.class)
+	@Test(
+			expectedExceptions = AssertionError.class,
+			expectedExceptionsMessageRegExp = "Expected true to be falsy")
 	public void toBeFalsyNegative() {
 		expect(true).toBeFalsy();
 	}

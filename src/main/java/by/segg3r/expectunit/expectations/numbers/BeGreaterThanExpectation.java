@@ -15,4 +15,9 @@ public class BeGreaterThanExpectation<N extends Number> extends Expectation<N> {
 		return object.doubleValue() > other.doubleValue();
 	}
 
+	@Override
+	public String getMatchErrorMessage() {
+		return "be greater than " + other;
+	}
+
 }
